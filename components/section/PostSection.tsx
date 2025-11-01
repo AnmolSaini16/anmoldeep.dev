@@ -37,7 +37,7 @@ const PostSection = ({ children, post, className, ...props }: Props) => {
       )}
 
       <div className="space-y-4">
-        <h1 className="text-primary text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <h1 className="text-primary text-2xl font-extrabold tracking-tight sm:text-4xl">
           {title}
         </h1>
         <div className="text-muted-foreground flex flex-wrap items-center gap-3 text-sm">
@@ -47,7 +47,7 @@ const PostSection = ({ children, post, className, ...props }: Props) => {
               {formatDate(published_at, {
                 month: "short",
                 day: "2-digit",
-                year: "2-digit",
+                year: "numeric",
               })}
             </time>
           </div>
