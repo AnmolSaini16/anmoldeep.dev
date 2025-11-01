@@ -1,0 +1,211 @@
+---
+title: "Prototype and Inheritance in JavaScript"
+published_at: "2025-03-15"
+description: "Understanding Inheritance and Protoypes in JS."
+---
+
+## Understanding Inheritance
+
+> According to MDN, inheritance in programming allows a child entity to inherit properties and behaviours from a parent, enabling code reuse and extension. In JavaScript, this is achieved through objects, where each object has an internal link to another object known as its prototype.
+
+Let's illustrate this with an example:
+
+```jsx
+class Person {
+  talk() {
+    return "talking";
+  }
+}
+const me = new Person();
+me.talk(); // talking
+me; // Person { Prototype: { talk() } }
+```
+
+Here, `me` does not directly contain the `talk` method but inherits it from the `Person` class through its prototype.
+
+```jsx
+me.age = 25;
+me; // {age: 25, Prototype: { talk() } }
+Person.prototype === me.__proto__; // true
+me.__proto__.talk(); // talking
+```
+
+Adding a property directly to an instance gets stored on that specific object and does not modify the prototype. However, methods inherited from the prototype remain accessible via `__proto__`.
+
+### Modifying the Prototype Method
+
+If we modify `talk()` on `Person.prototype`, all objects linked to this prototype will reflect the change
+
+```jsx
+Person.prototype.talk = function () {
+  return "new talking";
+};
+
+console.log(me.talk()); // "new talking"
+
+// Any other instance linked to `Person.prototype` will also reflect this change
+const you = new Person();
+console.log(you.talk()); // "new talking"
+```
+
+### How ES6 Classes Work Under the Hood
+
+> ES6 classes are essentially syntactic sugar over JavaScript’s prototype-based inheritance. Underneath, they function using constructor functions and prototypes:
+
+```jsx
+function Person() {}
+
+Person.prototype.talk = function () {
+  return "Talking";
+};
+
+const me = new Person();
+const you = new Person();
+
+console.log(me.talk()); // "Talking"
+console.log(you.talk()); // "Talking"
+```
+
+### Constructor Functions and Their Behavior
+
+In JavaScript, when using a constructor function, properties and methods can be assigned either directly to the instance (`this`) or to the prototype. The difference is in how they are stored and shared across instances.
+
+```jsx
+function Person() {
+  this.talk = function () {
+    return "talking";
+  };
+}
+const me = new Person();
+me.talk(); // talking
+me; // Person {talk: (), Prototype: {} }
+```
+
+Here, the `talk` method is directly added to each instance (`me`). This means every new instance gets its own copy of `talk()`, unlike the prototype-based approach used in ES6 classes. This results in unnecessary duplication and increased memory usage.
+
+```jsx
+function Person() {
+  this.age = 15;
+}
+const me = new Person();
+me.age; // 15
+Person.prototype.age; // undefined
+Person.prototype.age = 25;
+me.age; // still 15
+```
+
+- The `age` property is assigned directly to `me`, so it exists only on the instance.
+- Adding `age` to `Person.prototype` later does not affect `me`, since instance properties take precedence over prototype properties.
+
+### Best Practice: Use `this` for Properties, Prototype for Methods
+
+For optimal performance and memory efficiency:
+
+- Properties (unique to each instance) should be assigned directly to `this` inside the constructor.
+- Methods (shared across instances) should be added to `Person.prototype`.
+
+```jsx
+function Person() {
+  this.age = 15; // Instance-specific property
+}
+
+// Adding method to prototype
+Person.prototype.talk = function () {
+  return "talking";
+};
+
+const me = new Person();
+const you = new Person();
+
+console.log(me.talk()); // "talking"
+console.log(you.talk()); // "talking"
+console.log(me); // Person { age: 15 }, talk() exists in prototype
+console.log(you); // Person { age: 15 }, talk() exists in prototype
+```
+
+## Prototypal Inheritance
+
+In JavaScript, **prototype inheritance** is a mechanism by which objects can inherit properties and methods from other objects. Every object in JavaScript has an internal link (referred to as `[[Prototype]]`) to another object, called its **prototype**. This is the foundation of how inheritance works in JavaScript.
+
+```jsx
+const person = {};
+person.name = "Anmol";
+person; // { name: 'Anmol', [[Prototype]]: Object }
+```
+
+```jsx
+person.toString(); // this property is on the proto object.
+person.__proto__ === Object.prototype; // true
+```
+
+Let’s take an example of arrays
+
+```jsx
+const names = ["Anmol", "Rahul"];
+console.log(names);
+// Output:
+// ['Anmol', 'Rahul']
+// [[Prototype]]: Array(0) → contains all array methods
+//     push: ƒ push()
+//     pop: ƒ pop()
+//     map: ƒ map()
+//     filter: ƒ filter()
+// [[Prototype]]: Object
+```
+
+When you declare an array like `const names = ['Anmol', 'Rahul'];`, it is an instance of the `Array` object and follows this prototype chain:
+
+1. **Instance Level (`names`)**
+   - The array stores its elements: `0: "Anmol"` and `1: "Rahul"`.
+2. **Prototype Level (`Array.prototype`)**
+   - The array inherits built-in array methods like `.push()`, `.pop()`, `.map()`, `.filter()`, etc.
+3. **Higher-Level Prototype (`Object.prototype`)**
+   - `Array.prototype` itself is linked to `Object.prototype`, inheriting methods like `toString()` and `hasOwnProperty()`.
+
+The prototype chain for `names` looks like this:
+
+```jsx
+names → Array.prototype → Object.prototype → null
+```
+
+```jsx
+names.__proto__.__proto__ === Object.prototype; // true
+```
+
+### Using `Object.create()` for Prototypal Inheritance
+
+```jsx
+const human = {
+  kind: "human",
+};
+const anmol = Object.create(human);
+anmol; // [[Prototype]]: { kind: "human" [[Prototype]]: Object }
+anmol.kind; // human
+```
+
+The `Object.create(proto)` method creates a **new object** and links it to the provided prototype (`proto`). In this example, `anmol` is an empty object but inherits the `kind` property from `human` via its `[[Prototype]]` chain.
+
+### **proto** vs prototype
+
+```jsx
+function Person(name) {
+  this.name = name;
+}
+const me = new Person("Anmol");
+me.prototype; // undefined
+Person.prototype; // { constructor: Dude, Prototype: {Object} }
+```
+
+- `prototype` is a property of **constructor functions** (`Person` in this case).
+- `me.prototype` is `undefined` because **instances do not have a `prototype` property**—only constructor functions do.
+
+```jsx
+me.__proto__; // { constructor: Dude, Prototype: {Object} }
+me.__proto__ === Person.prototype; // true
+```
+
+Thus, `__proto__` and `prototype` serve the same purpose but are accessed differently—one from the instance (`__proto__`) and the other from the constructor function (`prototype`).
+
+## References
+
+[You Don't Know JS](https://github.com/getify/You-Dont-Know-JS)

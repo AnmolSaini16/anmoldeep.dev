@@ -1,0 +1,282 @@
+---
+title: "Optimized Infinite Scroll with Next.js 14 Server Actions and React Query"
+published_at: "2024-05-15"
+cover_image: "/blog/infinite-scroll.webp"
+description: "Pagination is crucial when dealing with large datasets in web applications..."
+---
+
+Pagination is crucial when dealing with large datasets in web applications, ensuring a smoother user experience and optimal performance.
+
+While many tutorials/blogs focus on state management to handle pagination, a more scalable and production-ready approach involves leveraging **React Query** within a Next.js application. The useInfiniteQuery hook from React Query streamlines our workflow by allowing us to fetch data incrementally from the server while keeping track of whether there’s more to load.
+
+The approach we will be using involves fetching the initial data promptly from the server to ensure a swift initial load, followed by subsequent data fetching on the client side triggered by scrolling.
+
+Let’s dive into it :)
+
+### Fetching initial data from the server
+
+To fetch the initial post data on the server, start by creating an action called `getPosts`. This action will take a parameter called `pageParam`, which will initially be set to 1. This means that the first page of results will be fetched, with a limit of 18 posts per page. When integrating with React Query, this `pageParam` will dynamically update as the user scrolls
+
+```tsx
+// page.tsx
+import PostsWrapper from "@/components/PostsWrapper";
+import getPosts from "@/lib/action";
+
+export default async function Home() {
+  const posts = await getPosts({ pageParam: 1 });
+
+  return <PostsWrapper posts={posts} />;
+}
+```
+
+```tsx
+// actions.ts
+import { FETCH_POSTS_LIMIT } from "./contants";
+
+export default async function getPosts({
+  pageParam = 1,
+}: {
+  pageParam: unknown;
+}) {
+  const res = await fetch(
+    `https://jsonplaceholder.typicode.com/posts?_page=${pageParam}&_limit=${FETCH_POSTS_LIMIT}`,
+  );
+  return res.json();
+}
+
+// constants.ts
+export const FETCH_POSTS_LIMIT = 18;
+```
+
+Additionally, you can show a loading state when data is fetching from the server.
+
+```tsx
+// loading.tsx
+export default function loading() {
+  return <p>Loading posts...</p>;
+}
+```
+
+### Displaying initial data
+
+```tsx
+// components/PostWrapper.tsx
+import React from "react";
+
+import { IPost } from "@/types";
+import Post from "./Post";
+
+type Props = {
+  posts: IPost[];
+};
+
+const PostsWrapper = ({ posts }: Props) => {
+  return (
+    <div className="space-y-6">
+      <h1 className="text-2xl">Personalised Post for you</h1>
+      <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-3">
+        {posts.map((post, i) => (
+          <React.Fragment key={i}>
+            <Post post={post} key={post.id} />
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default PostsWrapper;
+
+// compoenents/Post.tsx
+import { IPost } from "@/types";
+import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
+
+type Props = { post: IPost };
+
+const Post = ({ post }: Props) => {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="truncate break-words">{post?.title}</CardTitle>
+      </CardHeader>
+      <CardContent>{post?.body}</CardContent>
+    </Card>
+  );
+};
+
+export default Post;
+
+// types/index.ts
+export type IPost = {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+};
+```
+
+### Integrating React Query
+
+Ensure you set up React Query in your project. We will be using the `useInfiniteQueryhook` from React Query to handle infinite scrolling and data fetching.
+
+```tsx
+// hooks/useGetPosts.ts
+"use client";
+
+import { useInfiniteQuery } from "@tanstack/react-query";
+
+import { IPost } from "@/types";
+import getPosts from "@/lib/action";
+
+export default function useGetPosts(initialData: IPost[]) {
+  return useInfiniteQuery<IPost[]>({
+    queryKey: ["posts"],
+    queryFn: getPosts,
+    initialData: { pages: [initialData], pageParams: [1] },
+    initialPageParam: 1,
+    getNextPageParam(lastPage, allPages) {
+      return lastPage.length > 0 ? allPages.length + 1 : undefined;
+    },
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
+  });
+}
+```
+
+Here,
+
+- `queryFn` The function returns a promise used to request the post's data. It contains a parameter, `pageParam`, which specifies the current page to be fetched, which we have integrated with the `getPosts` action above.
+
+- `initial data` The initial data comes from the server and is passed as props so that the first page of data is pre-loaded. This eliminates the need for an initial client-side call.
+
+- `initialPageParam` The initial page number.
+
+- `getNextPageParam` Used to calculate the next page, it receives both the last page of the infinite list of data and the full array of all pages as the two arguments.
+  `lastPage` An array of posts from the last fetched page (IPost[])
+  `allPages` A 2D array of posts, representing all fetched pages (IPost[][])
+
+If `lastPage` contains posts, it returns the next page number `allPages.length + 1`. If `lastPage` is empty, it returns `undefined` to signal that there are no more pages.
+
+The return data from the useInfiniteQuery hook is similar to the useQuery hook with some differences.
+
+```tsx
+{
+  pages: [ // contains data for allPages
+    [
+      // posts 1- 18
+    ],
+    [
+      // posts 19-36
+    ],
+    [
+      ///post 37-44
+    ],
+  ],
+  pageParams: [1, 2, 3], //Array of all page params
+};
+```
+
+In the `PostWrapper` component, we use the data returned by the `useInfiniteQuery` hook. By mapping over the pages (a 2D array of posts), we can render the posts.
+
+`useInfiniteQuery` has a function called `fetchNextPage`. As the user scrolls we will call the function, and with each invocation fetchNextPage updates the pages—a 2D array of posts—by appending more arrays of posts.
+
+```tsx
+// components/PostWrapper.tsx
+"use client";
+
+import React from "react";
+
+import { IPost } from "@/types";
+import Post from "./Post";
+import useGetPosts from "@/hook/useGetPosts";
+
+type Props = {
+  posts: IPost[];
+};
+
+const PostsWrapper = ({ posts }: Props) => {
+  const { data } = useGetPosts(posts); //posts -> Initial posts data
+
+  return (
+    <div className="space-y-6">
+      <h1 className="text-2xl">Personalised Post for you</h1>
+      <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-3">
+        {data?.pages.map((group, i) => (
+          <React.Fragment key={i}>
+            {group?.map((post) => (
+              <Post post={post} key={post.id} />
+            ))}
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default PostsWrapper;
+```
+
+### Fetching more posts as you scroll
+
+To determine if the user has reached the end of the current post's list, we can utilize the [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) package. By integrating this package, we can use the `useInView()` hook and detect when the user reaches the end of the current post's list. Upon detecting this event, we can trigger the function `fetchNextPage`.
+
+Moreover, to provide users with clearer feedback and enhance the overall UX, we can utilize two additional functions offered by the useInfiniteQuery hook: `isFetchingNextPage` and `hasNextPage`. These properties allow us to indicate to users whether additional content is being loaded (isFetchingNextPage) and whether there are more pages available to fetch (hasNextPage).
+
+```tsx
+// components/PostWrapper.tsx
+"use client";
+
+import React, { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+
+import { IPost } from "@/types";
+import Post from "./Post";
+import useGetPosts from "@/hook/useGetPosts";
+
+type Props = {
+  posts: IPost[];
+};
+
+const PostsWrapper = ({ posts }: Props) => {
+  const { ref, inView } = useInView();
+  const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
+    useGetPosts(posts);
+
+  useEffect(() => {
+    if (inView) {
+      fetchNextPage();
+    }
+  }, [inView]);
+
+  return (
+    <div className="space-y-6">
+      <h1 className="text-2xl">Personalised Post for you</h1>
+      <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-3">
+        {data?.pages.map((group, i) => (
+          <React.Fragment key={i}>
+            {group?.map((post) => (
+              <Post post={post} key={post.id} />
+            ))}
+          </React.Fragment>
+        ))}
+      </div>
+      {isFetchingNextPage && hasNextPage ? (
+        <p className="text-center">Loading more posts...</p>
+      ) : (
+        <p className="text-center">No more posts found</p>
+      )}
+
+      <div ref={ref} />
+    </div>
+  );
+};
+
+export default PostsWrapper;
+```
+
+---
+
+- Code: [Github repo](https://github.com/AnmolSaini16/next-14-infinite-scroll)
+- For more reference: [React Query Docs](https://tanstack.com/query/v4/docs/framework/react/guides/infinite-queries)
+
+Thank you!

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { StaticImageData } from "next/image";
 
-import { workplaces } from "@/config";
+import { workplaces } from "@/content/site";
 import Avatar from "./ui/Avatar";
 import AnimatedSection from "./section/AnimatedSection";
 

@@ -10,9 +10,10 @@ import ThemeSwitcher from "@/components/theme/ThemeSwitcher";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { siteConfig } from "@/config";
+import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
   title: {
     default: siteConfig.name,

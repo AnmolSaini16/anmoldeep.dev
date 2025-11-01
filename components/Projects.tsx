@@ -5,7 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-import { projects } from "@/config";
+import { projects } from "@/content/site";
 import {
   Card,
   CardContent,

@@ -5,17 +5,17 @@ import { formatDate } from "@/lib/utils";
 
 export const BlogPost = ({ post }: { post: IPost }) => (
   <Link
-    href={`/blog/${post.slug}`}
-    aria-label={`Read ${post.title}`}
+    href={`/blog/${post.metadata.slug}`}
+    aria-label={`Read ${post.metadata.title}`}
     className="group"
   >
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b group-hover:border-primary/40 transition-all">
-      <span className="text-muted-foreground text-sm text-left min-w-[50px] mb-1 sm:mb-0 group-hover:text-primary transition-colors">
-        {formatDate(post.published_timestamp)}
+    <div className="group-hover:border-primary/40 flex flex-col items-center justify-between border-b py-2 transition-all sm:flex-row sm:items-center sm:justify-between">
+      <span className="text-muted-foreground group-hover:text-primary mb-1 min-w-[50px] text-left text-sm transition-colors sm:mb-0">
+        {formatDate(post.metadata.published_at)}
       </span>
 
-      <span className="flex-1 pl-0 sm:pl-6 text-base text-primary">
-        {post.title}
+      <span className="text-primary flex-1 pl-0 text-base sm:pl-6">
+        {post.metadata.title}
       </span>
     </div>
   </Link>

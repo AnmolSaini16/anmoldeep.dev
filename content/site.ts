@@ -82,11 +82,11 @@ export const siteConfig = {
   name: "Anmoldeep Singh",
   description:
     "I am a Software Engineer specializing in web. I love to Build Things!",
-  url: "https://anmoldeep.dev",
+  url: "https://anmoldeep.dev/",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://anmoldeep.dev",
+    url: "https://anmoldeep.dev/",
     title: "Anmoldeep Singh",
     description:
       "I am a Software Engineer specializing in web. I love to Build Things!",

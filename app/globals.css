@@ -109,3 +109,12 @@
     cursor: pointer;
   }
 }
+
+/* markdown styles */
+pre {
+  @apply border rounded-lg shadow-md overflow-x-auto py-4 px-0;
+}
+ 
+pre [data-line] {
+  @apply px-4 py-0
+}

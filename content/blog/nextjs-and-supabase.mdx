@@ -1,0 +1,45 @@
+---
+title: "Next.js + Supabase: My Backend Pick"
+published_at: "2024-04-28"
+description: "I’ve been exploring options for my upcoming side project..."
+---
+
+I've been exploring options for my upcoming side project and initially settled on using DrizzleORM with Postgres alongside Next.js. However, I recently stumbled upon Supabase, which seems to offer robust features and smooth integration for app development.
+
+My goal was to create a straightforward yet efficient polling platform where users can easily create polls and others can vote on them. I have added the project link and repo at the end.
+
+I found these Supabase features to be excellent and intuitive, making project setup and scaling a breeze.
+
+<Image
+  src="/blog/infinite-scroll.webp"
+  alt="Map preview"
+  width={1200}
+  height={630}
+/>
+
+## Database
+
+In today's tech landscape, PostgreSQL stands out as one of the most widely embraced databases, renowned for its robustness and versatility. And when integrating it into your projects, Supabase offers an unparalleled experience.
+
+With Supabase, querying data becomes a breeze thanks to its built-in wrapper functions, simplifying the process and allowing developers to focus on building exceptional user experiences.
+
+## Permissions
+
+Supabase seamlessly integrates PostgreSQL's RLS functionality, providing a robust framework for implementing access policies. Whether you prefer crafting policies directly with SQL or leveraging Supabase's convenient built-in templates, managing access permissions is super easy
+
+## Authentication
+
+Supabase has inbuild templates for OAuth login methods like Github, Google, etc you can use simple email, password, and magic links techniques also.
+
+Upon database creation, Supabase automatically generates an **`auth.users`** table, As users register on your application, Supabase assigns unique IDs, facilitating smooth integration with your database.
+
+## Realtime
+
+Supabase's intuitive wrapper around PostgreSQL. It integrates real-time functionality into your applications, allowing you to subscribe to channels and receive instant updates.
+
+Supabase simplifies the process, making it easy for developers to listen for real-time changes within their applications. With just a few lines of code, you can tap into the real-time capabilities of your database, enhancing the responsiveness and interactivity of your app.
+
+## Project Preview and Repo
+
+[Live Preview](https://easy-poll-time.vercel.app/)
+[GitHub Repo](https://github.com/AnmolSaini16/easy-poll)

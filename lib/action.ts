@@ -2,25 +2,9 @@
 
 import { Resend } from "resend";
 
-import { IPost } from "@/types";
-import { fetchFromDevToAPI, sanitizeHtml } from "./utils";
+import { sanitizeHtml } from "./utils";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-
-export const getPosts = (params?: {
-  [key: string]: string | number;
-}): Promise<IPost[] | undefined> => {
-  const queryString = params
-    ? "?" + new URLSearchParams(params as Record<string, string>).toString()
-    : "";
-
-  return fetchFromDevToAPI<IPost[]>(
-    `https://dev.to/api/articles/me/published${queryString}`,
-  );
-};
-
-export const getPost = (slug: string): Promise<IPost | undefined> =>
-  fetchFromDevToAPI<IPost>(`https://dev.to/api/articles/anmolsaini16/${slug}`);
 
 export const sendEmail = async (formData: FormData) => {
   const senderEmail = formData.get("senderEmail") as string;

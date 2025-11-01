@@ -2,18 +2,16 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
 import PostSection from "@/components/section/PostSection";
-import { getPost, getPosts } from "@/lib/action";
-import { IPost } from "@/types";
-import MarkdownComponent from "@/components/markdown/Markdown";
-import { siteConfig } from "@/config";
+import MarkdownComponent from "@/components/mdx/Markdown";
+import { siteConfig } from "@/content/site";
+import { getAllPosts, getPostBySlug } from "@/lib/posts";
 
 export async function generateStaticParams() {
-  const posts = await getPosts();
-  return (
-    posts?.map((post) => ({
-      slug: post.slug,
-    })) ?? []
-  );
+  const posts = getAllPosts();
+
+  return posts.map((post) => ({
+    slug: post.metadata.slug,
+  }));
 }
 
 export async function generateMetadata({
@@ -21,7 +19,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const post: IPost | undefined = await getPost(params.slug);
+  const post = getPostBySlug(params.slug);
 
   if (!post) {
     return {
@@ -30,15 +28,17 @@ export async function generateMetadata({
     };
   }
 
+  const { title, description, cover_image } = post.metadata;
+
   return {
-    title: post.title,
-    description: post.description,
+    title,
+    description,
     openGraph: {
       ...siteConfig.openGraph,
-      title: post.title,
-      description: post.description,
-      images: post.cover_image
-        ? [{ url: post.cover_image as string, alt: post.title }]
+      title,
+      description,
+      images: cover_image
+        ? [{ url: cover_image as string, alt: title }]
         : undefined,
     },
   };
@@ -49,9 +49,7 @@ export default async function PostContentPage({
 }: {
   params: { slug: string };
 }) {
-  const { slug } = params;
-
-  const post: IPost | undefined = await getPost(slug);
+  const post = getPostBySlug(params.slug);
 
   if (!post) {
     return notFound();
@@ -59,9 +57,7 @@ export default async function PostContentPage({
 
   return (
     <PostSection post={post}>
-      <MarkdownComponent className="prose dark:prose-invert min-w-full">
-        {post.body_markdown}
-      </MarkdownComponent>
+      <MarkdownComponent content={post.content} />
     </PostSection>
   );
 }

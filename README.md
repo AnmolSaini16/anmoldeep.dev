@@ -4,7 +4,7 @@
 - Framer Motion
 - Tailwind CSS
 - Resend
-- Dev.to API
+- MDX for blogs
 - Vercel Deployment
 
 ## Getting Started

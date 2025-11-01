@@ -11,6 +11,8 @@ type Props = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const PostSection = ({ children, post, className, ...props }: Props) => {
+  const { title, published_at, cover_image, reading_time } = post.metadata;
+
   return (
     <section className={cn("flex flex-col gap-8", className)} {...props}>
       <Link
@@ -21,12 +23,11 @@ const PostSection = ({ children, post, className, ...props }: Props) => {
         <span>Back to Blog</span>
       </Link>
 
-      {/* Cover Image */}
-      {post?.cover_image && (
-        <div className="bg-muted relative hidden aspect-21/9 overflow-hidden rounded-lg border shadow-md sm:block">
+      {cover_image && (
+        <div className="bg-muted relative hidden aspect-[16/9] overflow-hidden rounded-lg border shadow-md sm:block">
           <Image
-            src={post.cover_image}
-            alt={post.title}
+            src={cover_image}
+            alt={title}
             className="object-cover"
             sizes="(min-width: 1024px) 900px, (min-width: 768px) 700px, 100vw"
             priority
@@ -35,16 +36,15 @@ const PostSection = ({ children, post, className, ...props }: Props) => {
         </div>
       )}
 
-      {/* Post Header */}
       <div className="space-y-4">
         <h1 className="text-primary text-3xl font-extrabold tracking-tight sm:text-4xl">
-          {post.title}
+          {title}
         </h1>
         <div className="text-muted-foreground flex flex-wrap items-center gap-3 text-sm">
           <div className="flex items-center gap-1.5">
             <Icons.calendar className="size-3.5" />
-            <time dateTime={post.published_timestamp}>
-              {formatDate(post.published_timestamp, {
+            <time dateTime={published_at}>
+              {formatDate(published_at, {
                 month: "short",
                 day: "2-digit",
                 year: "2-digit",
@@ -54,16 +54,14 @@ const PostSection = ({ children, post, className, ...props }: Props) => {
 
           <div className="bg-muted-foreground size-1 rounded-full" />
 
-          {Boolean(post?.reading_time_minutes) && (
-            <div className="flex items-center gap-1.5">
-              <Icons.clock className="size-3.5" />
-              <span>{post.reading_time_minutes} min read</span>
-            </div>
-          )}
+          <div className="flex items-center gap-1.5">
+            <Icons.clock className="size-3.5" />
+            <span>{reading_time}</span>
+          </div>
         </div>
       </div>
 
-      <div className="bg-muted h-0.5 w-20" />
+      <div className="bg-muted-foreground/40 h-0.5 w-20" />
 
       {/* Article Content */}
       <article>{children}</article>

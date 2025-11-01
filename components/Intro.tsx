@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import profilePic from "@/public/profile.png";
 import Avatar from "@/components/ui/Avatar";
 import Link from "next/link";
-import { socialLinks } from "@/config";
+import { socialLinks } from "@/content/site";
 import AnimatedSection from "./section/AnimatedSection";
 
 export default function Intro() {
