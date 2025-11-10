@@ -71,7 +71,7 @@ const Project = ({
         opacity: opacityProgess,
       }}
     >
-      <Card className="size-full overflow-hidden border-dashed">
+      <Card className="size-full overflow-hidden">
         <CardHeader className="p-4">
           <div className="bg-muted relative aspect-video overflow-hidden rounded-md">
             <Image
