@@ -5,7 +5,7 @@ import About from "@/components/About";
 
 export default function Home() {
   return (
-    <section className="flex flex-col gap-20">
+    <div className="flex flex-col gap-20">
       <Intro />
 
       <About />
@@ -13,6 +13,6 @@ export default function Home() {
       <WorkPlaces />
 
       <Projects />
-    </section>
+    </div>
   );
 }

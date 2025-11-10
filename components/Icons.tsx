@@ -1,7 +1,6 @@
 import {
   ArrowUpRight,
   Calendar,
-  ArrowLeft,
   Clock,
   Contact,
   Home,
@@ -19,7 +18,6 @@ export const Icons = {
   mail: FiMail,
   link: Link,
   arrowUpRight: ArrowUpRight,
-  arrowLeft: ArrowLeft,
   calendar: Calendar,
   clock: Clock,
   send: Send,

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { Toaster } from "react-hot-toast";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
 
@@ -72,7 +72,7 @@ export default function RootLayout({
           <ThemeSwitcher />
         </ThemeProvider>
         <Toaster />
-        <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID ?? ""} />
+        <Analytics />
       </body>
     </html>
   );

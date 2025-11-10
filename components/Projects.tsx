@@ -32,10 +32,10 @@ export default function Projects() {
         href="https://github.com/AnmolSaini16"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-muted-foreground hover:text-primary group mx-auto mt-1 inline-flex items-center gap-1 text-sm transition-colors"
+        className="text-muted-foreground hover:text-primary group decoration-muted-foreground/50 hover:decoration-primary mx-auto mt-1 inline-flex items-center gap-1 text-sm underline underline-offset-4 transition-colors"
       >
         Check out more on GitHub
-        <Icons.arrowUpRight className="size-3.5 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        <Icons.arrowUpRight className="size-3.5" />
       </Link>
     </AnimatedSection>
   );

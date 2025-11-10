@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
 import PostSection from "@/components/section/PostSection";
-import MarkdownComponent from "@/components/mdx/Markdown";
+import Mdx from "@/components/Markdown";
 import { siteConfig } from "@/content/site";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 
@@ -57,7 +57,7 @@ export default async function PostContentPage({
 
   return (
     <PostSection post={post}>
-      <MarkdownComponent content={post.content} />
+      <Mdx content={post.content} />
     </PostSection>
   );
 }

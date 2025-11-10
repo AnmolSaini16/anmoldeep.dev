@@ -8,7 +8,7 @@ import { BlogPost } from "@/components/BlogPost";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "A space where I share my thoughts, experiences, and ideas on programming, life, and curiosity. Stay tuned for more!",
+    "Sharing ideas and experiences on programming, life, and everything in between. Stay tuned for more!",
 };
 
 export default async function Blog() {
@@ -19,8 +19,8 @@ export default async function Blog() {
       <h1 className="text-2xl font-bold">Blog</h1>
 
       <p className="text-muted-foreground">
-        Sharing thoughts, experiences, and ideas on programming, life, and
-        curiosity.
+        Sharing ideas and experiences on programming, life, and everything in
+        between.
       </p>
 
       <ul className="flex flex-col gap-6 pt-8">
