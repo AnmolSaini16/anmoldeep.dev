@@ -36,7 +36,10 @@ function RoundedImage(props: React.ComponentProps<typeof Image>) {
   return (
     <Image
       {...props}
-      className={cn("bg-muted rounded-lg border shadow-md", props.className)}
+      className={cn(
+        "bg-muted rounded-lg border object-cover shadow-md",
+        props.className,
+      )}
     />
   );
 }
