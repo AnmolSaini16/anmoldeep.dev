@@ -8,6 +8,7 @@ import {
   Menu,
   PenLine,
   Send,
+  Undo2,
 } from "lucide-react";
 import { FiGithub, FiLinkedin, FiMail, FiTwitter } from "react-icons/fi";
 
@@ -25,4 +26,5 @@ export const Icons = {
   home: Home,
   contact: Contact,
   blog: PenLine,
+  back: Undo2,
 };

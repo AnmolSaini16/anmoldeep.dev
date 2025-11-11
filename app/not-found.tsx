@@ -12,7 +12,7 @@ const Custom404 = (): JSX.Element => (
         src="https://giphy.com/embed/8L0Pky6C83SzkzU55a"
         width="150"
         height="150"
-        className="giphy-embed rounded shadow-sm"
+        className="giphy-embed rounded-lg border"
         title="404 GIF"
       ></iframe>
 
@@ -23,7 +23,7 @@ const Custom404 = (): JSX.Element => (
 
       <Link
         href="/"
-        className="bg-secondary hover:bg-secondary/80 mt-6 rounded-md px-4 py-2 transition-colors"
+        className="bg-secondary hover:bg-secondary/80 mt-6 rounded-lg px-4 py-2 transition-colors"
       >
         Return to Home
       </Link>

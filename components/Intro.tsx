@@ -23,7 +23,7 @@ export default function Intro() {
         ideas to life!
       </p>
 
-      <div className="flex flex-wrap items-center gap-5">
+      <div className="flex flex-wrap items-center gap-4">
         {socialLinks.map((link, index) => (
           <motion.div
             key={link.label}

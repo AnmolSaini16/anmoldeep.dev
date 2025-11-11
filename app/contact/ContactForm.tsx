@@ -101,7 +101,7 @@ export default function ContactForm() {
       <button
         disabled={loading}
         type="submit"
-        className="group bg-primary hover:bg-primary/90 text-primary-foreground inline-flex h-10 items-center justify-center rounded-md px-8 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50"
+        className="group bg-primary hover:bg-primary/90 text-primary-foreground inline-flex h-10 items-center justify-center rounded-lg px-8 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50"
       >
         Let's talk
         <Icons.send className="ml-2 size-4 transition-transform duration-200 sm:group-hover:translate-x-0.5 sm:group-hover:-translate-y-0.5" />

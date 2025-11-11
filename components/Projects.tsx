@@ -32,7 +32,7 @@ export default function Projects() {
         href="https://github.com/AnmolSaini16"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-muted-foreground hover:text-primary group decoration-muted-foreground/50 hover:decoration-primary mx-auto mt-1 inline-flex items-center gap-1 text-sm underline underline-offset-4 transition-colors"
+        className="text-muted-foreground hover:text-primary hover:bg-secondary hover:dark:bg-secondary/50 mx-auto flex w-fit items-center gap-1 rounded-lg p-2 text-sm transition-colors"
       >
         Check out more on GitHub
         <Icons.arrowUpRight className="size-3.5" />
@@ -73,7 +73,7 @@ const Project = ({
     >
       <Card className="size-full overflow-hidden">
         <CardHeader className="p-4">
-          <div className="bg-muted relative aspect-video overflow-hidden rounded-md">
+          <div className="bg-muted relative aspect-video overflow-hidden rounded-lg">
             <Image
               src={imageSrc}
               alt={title}
@@ -99,7 +99,7 @@ const Project = ({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View ${title} source code`}
-              className="hover:bg-accent inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors"
+              className="hover:bg-secondary inline-flex h-8 w-8 items-center justify-center rounded-lg transition-colors"
             >
               <Icons.github className="size-4" />
             </Link>
@@ -110,7 +110,7 @@ const Project = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`View ${title} live demo`}
-                className="hover:bg-accent inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors"
+                className="hover:bg-secondary inline-flex h-8 w-8 items-center justify-center rounded-lg transition-colors"
               >
                 <Icons.link className="size-4" />
               </Link>

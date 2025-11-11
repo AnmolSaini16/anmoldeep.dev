@@ -3,6 +3,7 @@ import Image from "next/image";
 import { formatDate } from "@/lib/utils";
 import { IPost } from "@/types";
 import { Icons } from "../Icons";
+import Link from "next/link";
 
 type Props = {
   children: React.ReactNode;
@@ -29,10 +30,10 @@ const PostSection = ({ children, post, ...props }: Props) => {
         )}
 
         <header className="space-y-4">
-          <h1 className="text-primary text-2xl font-extrabold tracking-tight sm:text-4xl">
+          <h1 className="text-primary text-3xl font-extrabold tracking-tight sm:text-4xl">
             {title}
           </h1>
-          <div className="text-muted-foreground flex flex-wrap items-center gap-3 text-sm">
+          <div className="text-muted-foreground flex flex-wrap items-center gap-2.5 text-sm">
             <div className="flex items-center gap-1.5">
               <Icons.calendar className="size-3.5" />
               <time dateTime={published_at}>
@@ -57,6 +58,16 @@ const PostSection = ({ children, post, ...props }: Props) => {
 
         {children}
       </article>
+
+      <div className="bg-border mx-auto mt-12 mb-6 h-px" />
+
+      <Link
+        href="/blog"
+        className="text-muted-foreground hover:text-primary hover:bg-secondary hover:dark:bg-secondary/50 mx-auto flex w-fit items-center gap-1 rounded-lg p-2 text-sm transition-colors"
+      >
+        <Icons.back className="size-3.5" />
+        Back to Blogs
+      </Link>
     </section>
   );
 };

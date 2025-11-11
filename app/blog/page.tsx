@@ -27,7 +27,7 @@ export default async function Blog() {
         {posts?.map((post, index) => (
           <AnimatedSection
             key={`${post.metadata.slug}-${index}`}
-            delay={0.1 + index * 0.05}
+            delay={0.1 + index * 0.08}
             component="li"
           >
             <BlogPost post={post} />
