@@ -1,9 +1,5 @@
-"use client";
-
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 
 import { projects } from "@/content/site";
 import {
@@ -53,71 +49,50 @@ const Project = ({
   imageSrc: StaticImageData;
   github: string;
   demo?: string;
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
+}) => (
+  <Card className="size-full overflow-hidden">
+    <CardHeader className="p-4">
+      <div className="bg-muted relative aspect-video overflow-hidden rounded-lg">
+        <Image
+          src={imageSrc}
+          alt={title}
+          className="object-cover"
+          quality={95}
+          fill
+          sizes="(min-width: 1024px) 300px, (min-width: 768px) 400px, 100vw"
+        />
+      </div>
+    </CardHeader>
+    <CardContent className="space-y-1.5">
+      <CardTitle className="line-clamp-1 text-base font-bold">
+        {title}
+      </CardTitle>
+      <CardDescription className="line-clamp-2">{description}</CardDescription>
+    </CardContent>
+    <CardFooter>
+      <div className="flex gap-1">
+        <Link
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`View ${title} source code`}
+          className="hover:bg-secondary inline-flex h-8 w-8 items-center justify-center rounded-lg transition-colors"
+        >
+          <Icons.github className="size-4" />
+        </Link>
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0 1", "1.33 1"],
-  });
-  const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
-
-  return (
-    <motion.div
-      ref={ref}
-      style={{
-        scale: scaleProgess,
-        opacity: opacityProgess,
-      }}
-    >
-      <Card className="size-full overflow-hidden">
-        <CardHeader className="p-4">
-          <div className="bg-muted relative aspect-video overflow-hidden rounded-lg">
-            <Image
-              src={imageSrc}
-              alt={title}
-              className="object-cover"
-              quality={95}
-              fill
-              sizes="(min-width: 1024px) 300px, (min-width: 768px) 400px, 100vw"
-            />
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-1.5 p-4 pt-0">
-          <CardTitle className="line-clamp-1 text-base font-bold">
-            {title}
-          </CardTitle>
-          <CardDescription className="line-clamp-2">
-            {description}
-          </CardDescription>
-        </CardContent>
-        <CardFooter className="p-4 pt-0">
-          <div className="flex gap-2">
-            <Link
-              href={github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`View ${title} source code`}
-              className="hover:bg-secondary inline-flex h-8 w-8 items-center justify-center rounded-lg transition-colors"
-            >
-              <Icons.github className="size-4" />
-            </Link>
-
-            {demo && (
-              <Link
-                href={demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`View ${title} live demo`}
-                className="hover:bg-secondary inline-flex h-8 w-8 items-center justify-center rounded-lg transition-colors"
-              >
-                <Icons.link className="size-4" />
-              </Link>
-            )}
-          </div>
-        </CardFooter>
-      </Card>
-    </motion.div>
-  );
-};
+        {demo && (
+          <Link
+            href={demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View ${title} live demo`}
+            className="hover:bg-secondary inline-flex h-8 w-8 items-center justify-center rounded-lg transition-colors"
+          >
+            <Icons.link className="size-4" />
+          </Link>
+        )}
+      </div>
+    </CardFooter>
+  </Card>
+);

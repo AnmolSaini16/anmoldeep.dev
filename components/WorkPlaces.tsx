@@ -7,24 +7,24 @@ import AnimatedSection from "./section/AnimatedSection";
 
 export async function WorkPlaces() {
   return (
-    <AnimatedSection className="space-y-4" delay={0.35}>
+    <AnimatedSection className="flex flex-col gap-4" delay={0.35}>
       <h2 className="text-primary text-lg font-bold tracking-tight">Work</h2>
-      <div className="space-y-8">
-        <p className="text-muted-foreground leading-relaxed">
-          I specialize in web development, with expertise in JavaScript,
-          TypeScript, React, Next.js, Node.js, Databases, HTML, CSS, and UI/UX.
-          Here are some of the places I've worked:
-        </p>
-        <ul className="space-y-10">
-          {workplaces.map((item, index) => (
-            <WorkPlace
-              key={index}
-              isLast={index === workplaces.length - 1}
-              {...item}
-            />
-          ))}
-        </ul>
-      </div>
+
+      <p className="text-muted-foreground leading-relaxed">
+        I specialize in web development, with expertise in JavaScript,
+        TypeScript, React, Next.js, Node.js, Databases, HTML, CSS, and UI/UX.
+        Here are some of the places I've worked:
+      </p>
+
+      <ul className="space-y-10">
+        {workplaces.map((item, index) => (
+          <WorkPlace
+            key={index}
+            isLast={index === workplaces.length - 1}
+            {...item}
+          />
+        ))}
+      </ul>
     </AnimatedSection>
   );
 }

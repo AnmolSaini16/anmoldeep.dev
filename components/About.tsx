@@ -2,7 +2,7 @@ import AnimatedSection from "./section/AnimatedSection";
 
 export default function About() {
   return (
-    <AnimatedSection className="space-y-4" delay={0.25}>
+    <AnimatedSection className="flex flex-col gap-4" delay={0.25}>
       <h2 className="text-lg font-bold tracking-tight">About</h2>
       <div className="text-muted-foreground space-y-4 leading-relaxed">
         <p>

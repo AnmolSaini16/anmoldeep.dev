@@ -15,7 +15,7 @@ export default function AnimatedSection({
   component,
   enable = true,
   delay = 0.1,
-  duration = 0.5,
+  duration = 0.6,
   ...props
 }: AnimatedSectionProps) {
   const Component = component || "section";
