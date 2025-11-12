@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { motion, type HTMLMotionProps } from "framer-motion";
 
 type AnimatedSectionProps = HTMLMotionProps<"section"> & {
@@ -19,17 +19,23 @@ export default function AnimatedSection({
   ...props
 }: AnimatedSectionProps) {
   const Component = component || "section";
+
+  const MotionComponent = useMemo(() => motion(Component), [Component]);
+
   if (!enable) {
     return <Component {...props}>{children}</Component>;
   }
-
-  const MotionComponent = motion(Component);
 
   return (
     <MotionComponent
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration, delay }}
+      transition={{
+        duration,
+        delay,
+        ease: [0.4, 0, 0.2, 1],
+        type: "tween",
+      }}
       {...props}
     >
       {children}
