@@ -23,17 +23,16 @@ export default function Intro() {
         ideas to life!
       </p>
 
-      <div className="flex flex-wrap items-center gap-4">
+      <div className="flex flex-wrap items-center gap-3">
         {socialLinks.map((link, index) => (
           <motion.div
             key={link.label}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 8, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
-              delay: 0.1 + index * 0.1,
-              type: "spring",
-              stiffness: 260,
-              damping: 20,
+              delay: 0.15 + index * 0.08,
+              duration: 0.4,
+              ease: [0.4, 0, 0.2, 1],
             }}
           >
             <Link
@@ -41,8 +40,9 @@ export default function Intro() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.label}
-              className="decoration-muted-foreground/50 hover:decoration-primary underline underline-offset-4 transition-colors"
+              className="bg-background hover:bg-secondary/50 text-muted-foreground hover:text-primary dark:bg-input/30 dark:border-input dark:hover:bg-input/50 inline-flex items-center gap-1.5 rounded-lg border p-1.5 text-sm font-medium shadow-xs transition-colors"
             >
+              <link.icon className="text-primary size-3.5" />
               {link.label}
             </Link>
           </motion.div>

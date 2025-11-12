@@ -23,7 +23,7 @@ const Custom404 = (): JSX.Element => (
 
       <Link
         href="/"
-        className="bg-secondary hover:bg-secondary/80 mt-6 rounded-lg px-4 py-2 transition-colors"
+        className="bg-secondary hover:bg-secondary/80 mt-4 rounded-lg px-4 py-2 text-sm font-medium transition-colors"
       >
         Return to Home
       </Link>

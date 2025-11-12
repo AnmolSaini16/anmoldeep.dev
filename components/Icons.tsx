@@ -9,14 +9,16 @@ import {
   PenLine,
   Send,
   Undo2,
+  Mail,
 } from "lucide-react";
-import { FiGithub, FiLinkedin, FiMail, FiTwitter } from "react-icons/fi";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
 
 export const Icons = {
-  github: FiGithub,
-  linkedin: FiLinkedin,
-  twitter: FiTwitter,
-  mail: FiMail,
+  github: FaGithub,
+  linkedin: FaLinkedin,
+  twitter: FaXTwitter,
+  mail: Mail,
   link: Link,
   arrowUpRight: ArrowUpRight,
   calendar: Calendar,

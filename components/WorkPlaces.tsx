@@ -70,7 +70,7 @@ const WorkPlace = ({
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary decoration-muted-foreground/50 hover:decoration-primary text-sm font-medium underline underline-offset-4"
+            className="text-primary decoration-primary/50 text-sm font-medium underline underline-offset-4"
           >
             {company}
           </Link>

@@ -63,7 +63,7 @@ const PostSection = ({ children, post, ...props }: Props) => {
 
       <Link
         href="/blog"
-        className="text-muted-foreground hover:text-primary hover:bg-secondary hover:dark:bg-secondary/50 mx-auto flex w-fit items-center gap-1 rounded-lg p-2 text-sm transition-colors"
+        className="text-muted-foreground hover:text-primary hover:bg-secondary hover:dark:bg-secondary/50 mx-auto flex w-fit items-center gap-1.5 rounded-lg p-2 text-sm font-medium transition-colors"
       >
         <Icons.back className="size-3.5" />
         Back to Blogs

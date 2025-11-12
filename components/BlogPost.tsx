@@ -9,7 +9,7 @@ export const BlogPost = ({ post }: { post: IPost }) => (
     aria-label={`Read ${post.metadata.title}`}
     className="group"
   >
-    <div className="group-hover:border-primary/40 flex flex-col justify-between border-b py-2 transition-all sm:flex-row sm:items-center">
+    <div className="group-hover:border-primary/50 flex flex-col justify-between border-b py-2 transition-all sm:flex-row sm:items-center">
       <span className="text-muted-foreground group-hover:text-primary mb-1 min-w-[50px] text-left text-sm transition-colors sm:mb-0">
         {formatDate(post.metadata.published_at)}
       </span>

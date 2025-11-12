@@ -32,7 +32,7 @@ export default function Projects() {
         href="https://github.com/AnmolSaini16"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-muted-foreground hover:text-primary hover:bg-secondary hover:dark:bg-secondary/50 mx-auto flex w-fit items-center gap-1 rounded-lg p-2 text-sm transition-colors"
+        className="text-muted-foreground hover:text-primary hover:bg-secondary hover:dark:bg-secondary/50 mx-auto flex w-fit items-center gap-1 rounded-lg p-2 text-sm font-medium transition-colors"
       >
         Check out more on GitHub
         <Icons.arrowUpRight className="size-3.5" />
