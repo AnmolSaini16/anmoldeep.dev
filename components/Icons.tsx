@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Calendar,
   Clock,
-  Contact,
   Home,
   Link,
   Menu,
@@ -11,6 +10,7 @@ import {
   Send,
   Undo2,
   Mail,
+  User,
 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
@@ -28,7 +28,7 @@ export const Icons = {
   send: Send,
   menu: Menu,
   home: Home,
-  contact: Contact,
   blog: PenLine,
   back: Undo2,
+  about: User,
 };

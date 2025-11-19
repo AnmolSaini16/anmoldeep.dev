@@ -13,12 +13,3 @@ export const formatDate = (
     "en-US",
     options ?? { month: "2-digit", year: "2-digit" },
   );
-
-export const sanitizeHtml = (html: string) => {
-  return html
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-};

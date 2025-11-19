@@ -7,13 +7,8 @@ import { motion } from "framer-motion";
 import { Icons } from "../Icons";
 
 const navLinks = [
-  { label: "Home", href: "/", icon: Icons.home },
   { label: "Blog", href: "/blog", icon: Icons.blog },
-  {
-    label: "Contact",
-    href: "/contact",
-    icon: Icons.contact,
-  },
+  { label: "About", href: "/about", icon: Icons.about },
 ];
 
 const listVariants = {

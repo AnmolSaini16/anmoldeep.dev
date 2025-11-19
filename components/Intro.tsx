@@ -21,10 +21,13 @@ export default function Intro() {
 
       <div className="space-y-4">
         <p className="leading-relaxed">
-          Software Engineer with {new Date().getFullYear() - 2022}+ years of
-          experience, I am known for my passion for building applications and
-          bringing ideas to life through code. I am currently working as a
-          Senior Software Engineer at{" "}
+          I’m a Software Engineer with {new Date().getFullYear() - 2022}+ years
+          of experience. I am known for my passion for building applications and
+          bringing ideas to life through code.
+        </p>
+
+        <p className="leading-relaxed">
+          I’m currently working as a Senior Software Engineer at{" "}
           <Link
             href="https://optym.com/"
             target="_blank"
@@ -34,10 +37,6 @@ export default function Intro() {
             Optym
           </Link>{" "}
           based in Bengaluru, India.
-        </p>
-        <p className="leading-relaxed">
-          I'm mostly self-taught and driven by curiosity. I love to learn new
-          things and share my knowledge and experiences through my writings.
         </p>
       </div>
 

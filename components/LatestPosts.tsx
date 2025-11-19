@@ -9,11 +9,11 @@ export default function LatestPosts() {
   const posts = getAllPosts().slice(0, 2);
 
   return (
-    <AnimatedSection className="flex flex-col gap-6" delay={0.35}>
+    <AnimatedSection delay={0.25}>
       <h2 className="text-xl leading-none font-semibold tracking-tight sm:text-2xl">
         Recent Blogs
       </h2>
-      <ul className="flex flex-col gap-4">
+      <ul className="mt-6 flex flex-col gap-4">
         {posts.map((post, index) => (
           <AnimatedSection
             key={`${post.metadata.slug}-${index}`}
@@ -27,7 +27,7 @@ export default function LatestPosts() {
       <Link
         href="/blog"
         aria-label="View all blog posts"
-        className="text-muted-foreground hover:text-primary hover:bg-secondary hover:dark:bg-secondary/50 mx-auto flex w-fit items-center gap-1 rounded-lg p-2 text-sm font-medium transition-colors"
+        className="text-muted-foreground hover:text-primary hover:bg-secondary hover:dark:bg-secondary/50 mx-auto mt-4 flex w-fit items-center gap-1 rounded-lg p-2 text-sm font-medium transition-colors"
       >
         View all blogs
         <Icons.arrowRight className="size-3.5" />
