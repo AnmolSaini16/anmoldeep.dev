@@ -3,7 +3,6 @@
 - Next.Js
 - Framer Motion
 - Tailwind CSS
-- Resend
 - MDX for blogs
 - Vercel Deployment
 
