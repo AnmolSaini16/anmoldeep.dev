@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -81,7 +80,6 @@ export default function RootLayout({
           </div>
           <ThemeSwitcher />
         </ThemeProvider>
-        <Toaster />
         <Analytics />
       </body>
     </html>
