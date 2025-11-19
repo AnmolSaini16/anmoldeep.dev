@@ -5,6 +5,12 @@ import AnimatedSection from "@/components/section/AnimatedSection";
 import Avatar from "@/components/ui/Avatar";
 import { workplaces } from "@/content/site";
 import { Card, CardContent } from "@/components/ui/card";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "About me and my work",
+};
 
 export default function About() {
   return (
