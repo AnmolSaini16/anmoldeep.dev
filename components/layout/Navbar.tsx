@@ -25,8 +25,8 @@ const listVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 8 },
-  show: { opacity: 1, y: 0 },
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
 };
 
 export default function Navbar() {
@@ -34,19 +34,19 @@ export default function Navbar() {
 
   return (
     <motion.header
-      className="z-999 h-20 sm:h-24"
-      initial={{ opacity: 0, y: -12 }}
-      animate={{ opacity: 1, y: 0 }}
+      className="z-[999] h-16 sm:h-20"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
       <nav className="relative container flex size-full max-w-[700px] items-center justify-between">
         <motion.div
-          initial={{ opacity: 0, y: -6 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.35, delay: 0.05 }}
         >
-          <Link href="/" className="font-mono font-bold">
-            Anmol.
+          <Link href="/" className="font-pixelify-sans text-2xl font-bold">
+            AS.
           </Link>
         </motion.div>
 
@@ -60,7 +60,7 @@ export default function Navbar() {
             <motion.li key={label} variants={itemVariants}>
               <Link
                 href={href}
-                className={`relative text-sm font-medium tracking-wide transition-colors ${
+                className={`font-mono text-sm font-medium tracking-wide transition-colors ${
                   href === path
                     ? "text-primary"
                     : "text-muted-foreground/80 hover:text-primary"

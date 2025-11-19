@@ -12,14 +12,20 @@ function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
 
   if (href.startsWith("/")) {
     return (
-      <Link href={href} {...props}>
+      <Link
+        href={href}
+        {...props}
+        className={cn("underline-offset-4", props.className)}
+      >
         {props.children}
       </Link>
     );
   }
 
   if (href.startsWith("#")) {
-    return <a {...props} />;
+    return (
+      <a {...props} className={cn("underline-offset-4", props.className)} />
+    );
   }
 
   return (
@@ -61,7 +67,11 @@ export default function Markdown({ content }: { content: string }) {
               [
                 rehypePrettyCode,
                 {
-                  theme: "material-theme-darker",
+                  theme: {
+                    dark: "material-theme-darker",
+                    light: "github-light",
+                  },
+                  keepBackground: true,
                 },
               ],
             ],

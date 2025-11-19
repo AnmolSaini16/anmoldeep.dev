@@ -1,5 +1,6 @@
 import {
   ArrowUpRight,
+  ArrowRight,
   Calendar,
   Clock,
   Contact,
@@ -21,6 +22,7 @@ export const Icons = {
   mail: Mail,
   link: Link,
   arrowUpRight: ArrowUpRight,
+  arrowRight: ArrowRight,
   calendar: Calendar,
   clock: Clock,
   send: Send,

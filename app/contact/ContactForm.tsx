@@ -7,6 +7,7 @@ import { sendEmail } from "@/lib/action";
 import { Icons } from "@/components/Icons";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -38,74 +39,82 @@ export default function ContactForm() {
   };
 
   return (
-    <form className="grid gap-6" onSubmit={handleSubmit} ref={formRef}>
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div className="grid gap-3">
-          <label
-            className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            htmlFor="name"
-          >
-            Name
-          </label>
-          <Input
-            id="name"
-            name="senderName"
-            type="text"
-            required
-            maxLength={100}
-            placeholder="John Doe"
+    <Card>
+      <CardContent className="p-4">
+        <form className="grid gap-6" onSubmit={handleSubmit} ref={formRef}>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-2.5">
+              <label
+                className="text-sm leading-relaxed font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                htmlFor="name"
+              >
+                Name
+              </label>
+              <Input
+                id="name"
+                name="senderName"
+                type="text"
+                required
+                maxLength={100}
+                placeholder="John Doe"
+                disabled={loading}
+                className="focus-visible:ring-primary bg-secondary transition-colors"
+              />
+            </div>
+
+            <div className="grid gap-2.5">
+              <label
+                className="text-sm leading-relaxed font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <Input
+                id="email"
+                name="senderEmail"
+                type="email"
+                required
+                maxLength={100}
+                placeholder="john@example.com"
+                disabled={loading}
+                className="focus-visible:ring-primary bg-secondary transition-colors"
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-2.5">
+            <label
+              className="text-sm leading-relaxed font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              htmlFor="message"
+            >
+              Message
+            </label>
+            <Textarea
+              id="message"
+              name="senderMessage"
+              placeholder="Your message here..."
+              required
+              maxLength={5000}
+              disabled={loading}
+              className="focus-visible:ring-primary bg-secondary min-h-[150px] resize-y transition-colors"
+            />
+            <p className="text-muted-foreground text-xs">
+              Maximum 5000 characters
+            </p>
+          </div>
+
+          <button
             disabled={loading}
-            className="focus-visible:ring-primary bg-secondary transition-colors"
-          />
-        </div>
-
-        <div className="grid gap-3">
-          <label
-            className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            htmlFor="email"
+            type="submit"
+            aria-label="Send message"
+            aria-disabled={loading}
+            className="group bg-primary hover:bg-primary/90 text-primary-foreground inline-flex h-10 items-center justify-center rounded-lg px-8 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50"
           >
-            Email
-          </label>
-          <Input
-            id="email"
-            name="senderEmail"
-            type="email"
-            required
-            maxLength={100}
-            placeholder="john@example.com"
-            disabled={loading}
-            className="focus-visible:ring-primary bg-secondary transition-colors"
-          />
-        </div>
-      </div>
-
-      <div className="grid gap-3">
-        <label
-          className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          htmlFor="message"
-        >
-          Message
-        </label>
-        <Textarea
-          id="message"
-          name="senderMessage"
-          placeholder="Your message here..."
-          required
-          maxLength={5000}
-          disabled={loading}
-          className="focus-visible:ring-primary bg-secondary min-h-[150px] resize-y transition-colors"
-        />
-        <p className="text-muted-foreground text-xs">Maximum 5000 characters</p>
-      </div>
-
-      <button
-        disabled={loading}
-        type="submit"
-        className="group bg-primary hover:bg-primary/90 text-primary-foreground inline-flex h-10 items-center justify-center rounded-lg px-8 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50"
-      >
-        Let's talk
-        <Icons.send className="ml-2 size-4 transition-transform duration-200 sm:group-hover:translate-x-0.5 sm:group-hover:-translate-y-0.5" />
-      </button>
-    </form>
+            Let's talk
+            <Icons.send className="ml-2 size-4 transition-transform duration-200 sm:group-hover:translate-x-0.5 sm:group-hover:-translate-y-0.5" />
+          </button>
+        </form>
+      </CardContent>
+    </Card>
   );
 }

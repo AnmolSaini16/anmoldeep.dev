@@ -15,15 +15,15 @@ export default async function Blog() {
   const posts = getAllPosts();
 
   return (
-    <AnimatedSection className="space-y-1.5">
-      <h1 className="text-2xl font-bold">Blog</h1>
+    <AnimatedSection className="flex flex-col gap-4">
+      <h1 className="text-2xl font-bold sm:text-3xl">Blog</h1>
 
       <p className="text-muted-foreground">
         Sharing ideas and experiences on programming, life, and everything in
-        between.
+        between. Stay tuned for more!
       </p>
 
-      <ul className="flex flex-col gap-6 pt-8">
+      <ul className="flex flex-col gap-4">
         {posts?.map((post, index) => (
           <AnimatedSection
             key={`${post.metadata.slug}-${index}`}

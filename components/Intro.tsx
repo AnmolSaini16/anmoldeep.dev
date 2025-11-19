@@ -10,18 +10,30 @@ import AnimatedSection from "./section/AnimatedSection";
 
 export default function Intro() {
   return (
-    <AnimatedSection className="flex flex-col gap-3">
-      <Avatar src={profilePic} alt="Anmoldeep Singh" size="md" sizes="80px" />
+    <AnimatedSection className="flex flex-col gap-6">
+      <div className="flex items-center gap-4">
+        <Avatar src={profilePic} alt="Anmoldeep Singh" size="md" sizes="80px" />
+        <div>
+          <h1 className="pb-1 text-2xl font-bold sm:text-3xl">
+            Anmoldeep Singh
+          </h1>
+          <p className="text-muted-foreground text-sm">
+            Senior Software Engineer
+          </p>
+        </div>
+      </div>
 
-      <h1 className="mt-1 text-3xl font-semibold tracking-tight">
-        Anmoldeep Singh
-      </h1>
-
-      <p className="text-muted-foreground leading-relaxed">
-        I'm a software engineer with a passion for building web applications. I
-        thrive on creating meaningful experiences through code and love bringing
-        ideas to life!
-      </p>
+      <div className="space-y-4">
+        <p className="leading-relaxed">
+          Software Engineer with {new Date().getFullYear() - 2022}+ years of
+          experience, I am known for my passion for building applications and
+          bringing ideas to life through code.
+        </p>
+        <p className="leading-relaxed">
+          I'm mostly self-taught and driven by curiosity. I love to learn new
+          things and share my knowledge and experiences through my writings.
+        </p>
+      </div>
 
       <div className="flex flex-wrap items-center gap-3">
         {socialLinks.map((link, index) => (
@@ -40,7 +52,7 @@ export default function Intro() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.label}
-              className="bg-background hover:bg-secondary/50 text-muted-foreground hover:text-primary dark:bg-input/30 dark:border-input dark:hover:bg-input/50 inline-flex items-center gap-1.5 rounded-lg border p-1.5 text-sm font-medium shadow-xs transition-colors"
+              className="bg-card hover:bg-secondary/50 text-muted-foreground hover:text-primary inline-flex items-center gap-1.5 rounded-lg border p-1.5 text-sm font-medium shadow-xs transition-colors"
             >
               <link.icon className="text-primary size-3.5" />
               {link.label}

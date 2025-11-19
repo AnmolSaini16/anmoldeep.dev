@@ -25,6 +25,11 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-pixelify-sans: var(--font-pixelify-sans);
+
 }
 
 
@@ -65,7 +70,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background min-h-screen scroll-smooth antialiased font-sans;
   }
 
   .container {
@@ -80,9 +85,28 @@
 
 /* markdown styles */
 pre {
-  @apply border rounded-lg shadow-md overflow-x-auto py-4 px-0;
+  @apply border rounded-lg shadow-xs overflow-x-auto py-4 px-0;
 }
  
 pre [data-line] {
-  @apply px-4 py-0
+  @apply px-4 py-0;
+}
+
+/* rehype-pretty-code theme switching */
+pre[data-theme] {
+  background-color: var(--shiki-light-bg);
+}
+
+pre[data-theme] code,
+pre[data-theme] code span {
+  color: var(--shiki-light);
+}
+
+.dark pre[data-theme] {
+  background-color: var(--shiki-dark-bg);
+}
+
+.dark pre[data-theme] code,
+.dark pre[data-theme] code span {
+  color: var(--shiki-dark);
 }

@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 
 export default function Contact() {
   return (
-    <AnimatedSection className="space-y-1.5">
-      <h1 className="text-2xl font-bold">Get in touch</h1>
+    <AnimatedSection className="flex flex-col gap-4">
+      <h1 className="text-2xl font-bold sm:text-3xl">Get in touch</h1>
 
       <p className="text-muted-foreground">
         Have a question or want to work together? I'd love to hear from you.
       </p>
 
-      <AnimatedSection delay={0.15} className="pt-8" component="div">
+      <AnimatedSection delay={0.15} component="div">
         <ContactForm />
       </AnimatedSection>
     </AnimatedSection>

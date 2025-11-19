@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { Pixelify_Sans } from "next/font/google";
 
 import "./globals.css";
 
@@ -11,6 +13,12 @@ import { cn } from "@/lib/utils";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/content/site";
+
+const pixelifySans = Pixelify_Sans({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-pixelify-sans",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -47,13 +55,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "bg-background min-h-screen scroll-smooth antialiased",
-          GeistSans.className,
-        )}
-      >
+    <html
+      lang="en"
+      className={cn(
+        GeistSans.variable,
+        GeistMono.variable,
+        pixelifySans.variable,
+      )}
+    >
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -63,7 +73,7 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <Navbar />
 
-            <main className="container max-w-[700px] grow pt-14 pb-20">
+            <main className="container max-w-[700px] grow pt-16 pb-20 sm:pt-20">
               {children}
             </main>
 

@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
     <footer>
-      <div className="text-center mx-auto py-6 container max-w-[700px] relative">
-        <small className="block text-xs tracking-wide text-gray-500">
+      <div className="container mx-auto max-w-[700px] py-6 text-center">
+        <small className="text-muted-foreground/80 block text-xs tracking-wide">
           &copy; {new Date().getFullYear()} Anmoldeep Singh. All rights
           reserved.
         </small>

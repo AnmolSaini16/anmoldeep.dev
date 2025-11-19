@@ -1,16 +1,16 @@
-import { WorkPlaces } from "@/components/WorkPlaces";
 import Projects from "@/components/Projects";
 import Intro from "@/components/Intro";
-import About from "@/components/About";
+import LatestPosts from "@/components/LatestPosts";
+import Experience from "@/components/Experience";
 
 export default function Home() {
   return (
     <div className="flex flex-col gap-16">
       <Intro />
 
-      <About />
+      <Experience />
 
-      <WorkPlaces />
+      <LatestPosts />
 
       <Projects />
     </div>

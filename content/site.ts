@@ -64,7 +64,7 @@ export const projects = [
   {
     title: "Table Forge",
     description:
-      "Beautiful, reusable table components built with Tailwind CSS and modern UI",
+      "Beautiful, reusable table components built with Tailwind CSS and modern UI.",
     imageSrc: tableForge,
     github: "https://github.com/AnmolSaini16/table-forge",
     demo: "https://table-forge-one.vercel.app/",
@@ -72,7 +72,7 @@ export const projects = [
   {
     title: "Next Maps",
     description:
-      "A beautifully designed modern map built with Next.js, Mapbox, and Shadcn/UI.",
+      "Clean and beautifully-designed map with Next.js, Mapbox, shadcn ui, and Tailwind.",
     imageSrc: nextMaps,
     github: "https://github.com/AnmolSaini16/next-maps",
   },
