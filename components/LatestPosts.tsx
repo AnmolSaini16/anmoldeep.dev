@@ -9,8 +9,8 @@ export default function LatestPosts() {
   const posts = getAllPosts().slice(0, 2);
 
   return (
-    <AnimatedSection className="flex flex-col gap-4" delay={0.35}>
-      <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+    <AnimatedSection className="flex flex-col gap-6" delay={0.35}>
+      <h2 className="text-xl leading-none font-semibold tracking-tight sm:text-2xl">
         Recent Blogs
       </h2>
       <ul className="flex flex-col gap-4">

@@ -15,8 +15,8 @@ import AnimatedSection from "./section/AnimatedSection";
 
 export default function Projects() {
   return (
-    <AnimatedSection className="flex flex-col gap-4" delay={0.45}>
-      <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+    <AnimatedSection className="flex flex-col gap-6" delay={0.45}>
+      <h2 className="text-xl leading-none font-semibold tracking-tight sm:text-2xl">
         Pinned Projects
       </h2>
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">

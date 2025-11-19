@@ -1,33 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 import profilePic from "@/public/profile.png";
 import Avatar from "@/components/ui/Avatar";
-import Link from "next/link";
 import { socialLinks } from "@/content/site";
 import AnimatedSection from "./section/AnimatedSection";
 
 export default function Intro() {
   return (
     <AnimatedSection className="flex flex-col gap-6">
-      <div className="flex items-center gap-4">
+      <div className="space-y-4">
         <Avatar src={profilePic} alt="Anmoldeep Singh" size="md" sizes="80px" />
-        <div>
-          <h1 className="pb-1 text-2xl font-bold sm:text-3xl">
-            Anmoldeep Singh
-          </h1>
-          <p className="text-muted-foreground text-sm">
-            Senior Software Engineer
-          </p>
-        </div>
+
+        <h1 className="text-2xl font-bold sm:text-3xl">
+          Hey, I'm Anmoldeep Singh
+        </h1>
       </div>
 
       <div className="space-y-4">
         <p className="leading-relaxed">
           Software Engineer with {new Date().getFullYear() - 2022}+ years of
           experience, I am known for my passion for building applications and
-          bringing ideas to life through code.
+          bringing ideas to life through code. I am currently working as a
+          Senior Software Engineer at{" "}
+          <Link
+            href="https://optym.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="decoration-primary/50 hover:decoration-primary font-medium underline underline-offset-4 transition-colors"
+          >
+            Optym
+          </Link>{" "}
+          based in Bengaluru, India.
         </p>
         <p className="leading-relaxed">
           I'm mostly self-taught and driven by curiosity. I love to learn new

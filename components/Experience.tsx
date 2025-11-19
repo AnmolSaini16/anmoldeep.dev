@@ -7,18 +7,20 @@ import { workplaces } from "@/content/site";
 
 export default function Experience() {
   return (
-    <AnimatedSection className="flex flex-col gap-4" delay={0.25}>
-      <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-        Experience
-      </h2>
+    <AnimatedSection className="flex flex-col gap-6" delay={0.25}>
+      <div className="space-y-3">
+        <h2 className="text-xl leading-none font-semibold tracking-tight sm:text-2xl">
+          Experience
+        </h2>
 
-      <p className="leading-relaxed">
-        I specialize in web development, with expertise in JavaScript,
-        TypeScript, React, Next.js, Node.js, Databases, HTML, CSS, and UI/UX.
-        Here are some of the places I've worked:
-      </p>
+        <p className="text-muted-foreground leading-relaxed">
+          I specialize in the web, with expertise in JavaScript, TypeScript,
+          React, Next.js, Node.js, Databases, HTML, CSS, and UI/UX. Here are
+          some of the places I've worked:
+        </p>
+      </div>
 
-      <ul className="space-y-8 pt-2">
+      <ul className="space-y-8">
         {workplaces.map((item, index) => (
           <AnimatedSection
             key={`workplace-${index}`}

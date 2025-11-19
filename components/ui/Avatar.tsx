@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 export default function Avatar({
   src,
   alt,
-  sizes,
+  sizes = "40px",
   size = "sm",
 }: {
   src: string | StaticImageData;
