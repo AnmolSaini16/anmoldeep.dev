@@ -19,18 +19,17 @@ export default function About() {
         </p>
 
         <p className="leading-relaxed">
-          I specialize in modern web development, with expertise in JavaScript,
-          TypeScript, React, Next.js, Node.js, Databases, HTML, CSS, and UI/UX
-          design. My focus is on building reliable, scalable, and delightful
-          experiences on the web.
+          I specialize in building web applications, with expertise in
+          JavaScript, TypeScript, React, Next.js, Node.js, Databases, HTML, CSS,
+          UI/UX design, and PWA. My focus is on building reliable, scalable, and
+          performant experiences on the web.
         </p>
 
         <p className="leading-relaxed">
           I’m mostly self-taught and driven by curiosity. I love to learn new
           things and share my knowledge and experiences through my writings.
           Apart from work, I enjoy spending time at the gym, swimming, reading,
-          and writing. Fitness and creativity help me stay balanced and fuel my
-          focus as a developer.
+          and writing.
         </p>
 
         <p className="leading-relaxed">
