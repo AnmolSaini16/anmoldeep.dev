@@ -14,9 +14,8 @@ export const BlogPost = ({ post }: { post: IPost }) => (
   <Link
     href={`/blog/${post.metadata.slug}`}
     aria-label={`Read ${post.metadata.title}`}
-    className="group"
   >
-    <Card className="group-hover:bg-secondary/50 transition-all">
+    <Card className="hover:bg-secondary/50 transition-all">
       <CardHeader>
         <CardTitle>{post.metadata.title}</CardTitle>
         <CardDescription className="line-clamp-2">

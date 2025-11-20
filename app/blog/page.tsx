@@ -16,7 +16,7 @@ export default async function Blog() {
 
   return (
     <AnimatedSection className="flex flex-col gap-6">
-      <h1 className="text-2xl font-bold sm:text-3xl">Blog</h1>
+      <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">Blog</h1>
 
       <p className="leading-relaxed">
         Sharing ideas and experiences on programming, life, and everything in

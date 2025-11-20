@@ -14,7 +14,7 @@ export default function Intro() {
       <div className="space-y-4">
         <Avatar src={profilePic} alt="Anmoldeep Singh" size="md" sizes="80px" />
 
-        <h1 className="text-2xl font-bold sm:text-3xl">
+        <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
           Hey, I'm Anmoldeep Singh
         </h1>
       </div>

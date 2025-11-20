@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <AnimatedSection className="flex flex-col gap-6">
-      <h1 className="text-2xl font-bold sm:text-3xl">About</h1>
+      <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">About</h1>
 
       <div className="space-y-4">
         <p className="leading-relaxed">
