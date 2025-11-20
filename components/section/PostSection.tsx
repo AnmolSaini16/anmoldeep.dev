@@ -30,7 +30,7 @@ const PostSection = ({ children, post, ...props }: Props) => {
         )}
 
         <header className="space-y-4">
-          <h1 className="text-primary text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
             {title}
           </h1>
           <div className="text-muted-foreground flex flex-wrap items-center gap-2.5 text-sm">

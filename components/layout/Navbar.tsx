@@ -58,7 +58,7 @@ export default function Navbar() {
                 className={`font-mono text-sm font-medium tracking-wide transition-colors ${
                   href === path
                     ? "text-primary"
-                    : "text-muted-foreground/80 hover:text-primary"
+                    : "text-muted-foreground/90 hover:text-primary"
                 }`}
               >
                 {label}

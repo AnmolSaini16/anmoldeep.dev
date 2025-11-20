@@ -69,7 +69,7 @@ export default function Markdown({ content }: { content: string }) {
                 {
                   theme: {
                     dark: "material-theme-darker",
-                    light: "github-light",
+                    light: "one-light",
                   },
                   keepBackground: true,
                 },

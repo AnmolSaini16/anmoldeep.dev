@@ -3,21 +3,15 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-import profilePic from "@/public/profile.png";
-import Avatar from "@/components/ui/Avatar";
 import { socialLinks } from "@/content/site";
 import AnimatedSection from "./section/AnimatedSection";
 
 export default function Intro() {
   return (
     <AnimatedSection className="flex flex-col gap-6">
-      <div className="space-y-4">
-        <Avatar src={profilePic} alt="Anmoldeep Singh" size="md" sizes="80px" />
-
-        <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-          Hey, I'm Anmoldeep Singh
-        </h1>
-      </div>
+      <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+        Anmoldeep Singh
+      </h1>
 
       <div className="space-y-4">
         <p className="leading-relaxed">
@@ -27,7 +21,7 @@ export default function Intro() {
         </p>
 
         <p className="leading-relaxed">
-          I’m currently working as a Senior Software Engineer at{" "}
+          Currently working as a Senior Software Engineer at{" "}
           <Link
             href="https://optym.com/"
             target="_blank"
@@ -57,7 +51,7 @@ export default function Intro() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.label}
-              className="bg-card hover:bg-secondary/50 text-muted-foreground hover:text-primary inline-flex items-center gap-1.5 rounded-lg border p-1.5 text-sm font-medium shadow-xs transition-colors"
+              className="bg-card hover:bg-secondary/80 dark:hover:bg-secondary/50 text-muted-foreground hover:text-primary inline-flex items-center gap-1.5 rounded-lg border p-1.5 text-sm font-medium shadow-xs transition-colors"
             >
               <link.icon className="text-primary size-3.5" />
               {link.label}
