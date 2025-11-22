@@ -30,6 +30,7 @@
   --font-mono: var(--font-geist-mono);
   --font-pixelify-sans: var(--font-pixelify-sans);
 
+  --leading-relaxed: 1.75;
 }
 
 
@@ -90,6 +91,10 @@ pre {
  
 pre [data-line] {
   @apply px-4 py-0;
+}
+
+.prose code:not(pre code) {
+  @apply bg-secondary dark:bg-secondary/50 p-1 rounded-lg;
 }
 
 /* rehype-pretty-code theme switching */
