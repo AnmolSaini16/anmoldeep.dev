@@ -51,17 +51,17 @@
   }
   .dark {
     --background: 0 0% 10.2%;
-    --foreground: 0 0% 92%;
+    --foreground: 0 0% 88%;
     --card: 0 0% 12%;
-    --card-foreground: 0 0% 92%;
-    --primary: 0 0% 92%;
+    --card-foreground: 0 0% 88%;
+    --primary: 0 0% 88%;
     --primary-foreground: 0 0% 10.2%;
     --secondary: 0 0% 18%;
     --muted: 0 0% 18%;
     --muted-foreground: 0 0% 70%;
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 0 0% 92%;
+    --ring: 0 0% 88%;
   }
 }
 

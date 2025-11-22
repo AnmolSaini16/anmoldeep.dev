@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 import { socialLinks } from "@/content/site";
@@ -14,13 +11,13 @@ export default function Intro() {
       </h1>
 
       <div className="space-y-4">
-        <p className="leading-relaxed">
-          I’m a Software Engineer with {new Date().getFullYear() - 2022}+ years
+        <AnimatedSection component="p" stagger={1} className="leading-relaxed">
+          I'm a Software Engineer with {new Date().getFullYear() - 2022}+ years
           of experience. I am known for my passion for building applications and
           bringing ideas to life through code.
-        </p>
+        </AnimatedSection>
 
-        <p className="leading-relaxed">
+        <AnimatedSection component="p" stagger={2} className="leading-relaxed">
           Currently working as a Senior Software Engineer at{" "}
           <Link
             href="https://optym.com/"
@@ -31,34 +28,28 @@ export default function Intro() {
             Optym
           </Link>{" "}
           based in Bengaluru, India.
-        </p>
+        </AnimatedSection>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3">
-        {socialLinks.map((link, index) => (
-          <motion.div
+      <AnimatedSection
+        component="div"
+        stagger={3}
+        className="flex flex-wrap items-center gap-3"
+      >
+        {socialLinks.map((link) => (
+          <Link
             key={link.label}
-            initial={{ opacity: 0, y: 8, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{
-              delay: 0.15 + index * 0.08,
-              duration: 0.4,
-              ease: [0.4, 0, 0.2, 1],
-            }}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={link.label}
+            className="bg-card hover:bg-secondary/80 dark:hover:bg-secondary/50 text-muted-foreground hover:text-primary inline-flex items-center gap-1.5 rounded-lg border p-1.5 text-sm font-medium shadow-xs transition-colors"
           >
-            <Link
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={link.label}
-              className="bg-card hover:bg-secondary/80 dark:hover:bg-secondary/50 text-muted-foreground hover:text-primary inline-flex items-center gap-1.5 rounded-lg border p-1.5 text-sm font-medium shadow-xs transition-colors"
-            >
-              <link.icon className="text-primary size-3.5" />
-              {link.label}
-            </Link>
-          </motion.div>
+            <link.icon className="text-primary size-3.5" />
+            {link.label}
+          </Link>
         ))}
-      </div>
+      </AnimatedSection>
     </AnimatedSection>
   );
 }

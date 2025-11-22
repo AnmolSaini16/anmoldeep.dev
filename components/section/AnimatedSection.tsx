@@ -1,40 +1,38 @@
 "use client";
 
-import React, { useMemo } from "react";
-import { motion, type HTMLMotionProps } from "framer-motion";
+import React from "react";
+import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react";
 
 type AnimatedSectionProps = HTMLMotionProps<"section"> & {
   component?: React.ElementType;
   enable?: boolean;
-  delay?: number;
-  duration?: number;
+  stagger?: number;
 };
 
 export default function AnimatedSection({
   children,
   component,
   enable = true,
-  delay = 0.1,
-  duration = 0.6,
+  stagger = 0,
   ...props
 }: AnimatedSectionProps) {
+  const shouldReduceMotion = useReducedMotion();
   const Component = component || "section";
 
-  const MotionComponent = useMemo(() => motion(Component), [Component]);
+  const MotionComponent = motion.create(Component);
 
-  if (!enable) {
+  if (!enable || shouldReduceMotion) {
     return <Component {...props}>{children}</Component>;
   }
 
   return (
     <MotionComponent
-      initial={{ opacity: 0, y: 12 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration,
-        delay,
+        delay: 0.1 * stagger,
+        duration: 0.5,
         ease: [0.4, 0, 0.2, 1],
-        type: "tween",
       }}
       {...props}
     >

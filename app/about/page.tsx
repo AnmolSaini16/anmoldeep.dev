@@ -18,46 +18,48 @@ export default function About() {
       <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">About</h1>
 
       <div className="space-y-4">
-        <p className="leading-relaxed">
+        <AnimatedSection component="p" stagger={1} className="leading-relaxed">
           I’m a Software Engineer based in Bengaluru, India, with a strong
           passion for building high-quality applications. I love turning ideas
           into real products that make a meaningful impact.
-        </p>
+        </AnimatedSection>
 
-        <p className="leading-relaxed">
+        <AnimatedSection component="p" stagger={2} className="leading-relaxed">
           I specialize in building web applications, with expertise in
           JavaScript, TypeScript, React, Next.js, Node.js, Databases, HTML, CSS,
           UI/UX design, and PWA. My focus is on building reliable, scalable, and
           performant experiences on the web.
-        </p>
+        </AnimatedSection>
 
-        <p className="leading-relaxed">
+        <AnimatedSection component="p" stagger={3} className="leading-relaxed">
           I’m mostly self-taught and driven by curiosity. I love to learn new
           things and share my knowledge and experiences through my writings.
           Apart from work, I enjoy spending time at the gym, swimming, reading,
           and writing.
-        </p>
+        </AnimatedSection>
 
-        <p className="leading-relaxed">
+        <AnimatedSection
+          component="p"
+          stagger={3.5}
+          className="leading-relaxed"
+        >
           Here are some of the places I’ve worked:
-        </p>
+        </AnimatedSection>
       </div>
 
-      <Card>
-        <CardContent className="p-0">
-          <ul className="divide-border divide-y">
-            {workplaces.map((item, index) => (
-              <AnimatedSection
-                key={`workplace-${index}`}
-                delay={0.1 + index * 0.1}
-                component="li"
-              >
-                <WorkPlace {...item} />
-              </AnimatedSection>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+      <AnimatedSection component="div" stagger={4}>
+        <Card>
+          <CardContent className="p-0">
+            <ul className="divide-border divide-y">
+              {workplaces.map((item, index) => (
+                <li key={`workplace-${index}`}>
+                  <WorkPlace {...item} />
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      </AnimatedSection>
     </AnimatedSection>
   );
 }

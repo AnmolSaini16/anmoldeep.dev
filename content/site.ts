@@ -81,7 +81,7 @@ export const projects = [
 export const siteConfig = {
   name: "Anmoldeep Singh",
   description:
-    "I am a Software Engineer specializing in web. I love to Build Things!",
+    "I am a Software Engineer specializing in building applications. I build things and also write about my experiences in code and life. ",
   url: "https://anmoldeep.dev/",
   openGraph: {
     type: "website",
@@ -89,7 +89,7 @@ export const siteConfig = {
     url: "https://anmoldeep.dev/",
     title: "Anmoldeep Singh",
     description:
-      "I am a Software Engineer specializing in web. I love to Build Things!",
+      "I am a Software Engineer specializing in building applications. I build things and also write about my experiences in code and life.",
     siteName: "Anmoldeep Singh",
   },
 };

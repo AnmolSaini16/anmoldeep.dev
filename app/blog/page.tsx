@@ -18,22 +18,22 @@ export default async function Blog() {
     <AnimatedSection className="flex flex-col gap-6">
       <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">Blog</h1>
 
-      <p className="leading-relaxed">
+      <AnimatedSection component="p" stagger={1} className="leading-relaxed">
         Sharing ideas and experiences on programming, life, and everything in
         between. Stay tuned for more!
-      </p>
+      </AnimatedSection>
 
-      <ul className="flex flex-col gap-4">
+      <AnimatedSection
+        component="ul"
+        stagger={2}
+        className="flex flex-col gap-4"
+      >
         {posts?.map((post, index) => (
-          <AnimatedSection
-            key={`${post.metadata.slug}-${index}`}
-            delay={0.1 + index * 0.08}
-            component="li"
-          >
+          <li key={`${post.metadata.slug}-${index}`}>
             <BlogPost post={post} />
-          </AnimatedSection>
+          </li>
         ))}
-      </ul>
+      </AnimatedSection>
     </AnimatedSection>
   );
 }

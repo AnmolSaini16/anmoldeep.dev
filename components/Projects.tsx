@@ -15,15 +15,15 @@ import AnimatedSection from "./section/AnimatedSection";
 
 export default function Projects() {
   return (
-    <AnimatedSection delay={0.35} className="flex flex-col gap-6">
+    <AnimatedSection stagger={5} className="flex flex-col gap-6">
       <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
         Pinned Projects
       </h2>
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {projects.map((project) => (
-          <AnimatedSection key={project.title} component="li">
+          <li key={project.title}>
             <Project {...project} />
-          </AnimatedSection>
+          </li>
         ))}
       </ul>
       <Link
@@ -31,7 +31,7 @@ export default function Projects() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="View more projects on my GitHub"
-        className="text-muted-foreground hover:text-primary hover:bg-secondary hover:dark:bg-secondary/50 mx-auto -mt-2 flex w-fit items-center gap-1 rounded-lg p-2 text-sm font-medium transition-colors"
+        className="text-muted-foreground hover:text-primary hover:bg-secondary hover:dark:bg-secondary/50 mx-auto -mt-2 flex w-fit items-center gap-1.5 rounded-lg p-2 text-sm font-medium transition-colors"
       >
         View more on GitHub
         <Icons.arrowUpRight className="size-3.5" />

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { Icons } from "../Icons";
 
@@ -15,7 +15,7 @@ const listVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.12 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
   },
 };
 
@@ -28,18 +28,9 @@ export default function Navbar() {
   const path = `/${usePathname().split("/")[1]}`;
 
   return (
-    <motion.header
-      className="z-[999] h-16 sm:h-20"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4 }}
-    >
+    <header className="z-[999] h-16 sm:h-20">
       <nav className="relative container flex size-full max-w-[700px] items-center justify-between">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.35, delay: 0.05 }}
-        >
+        <motion.div initial="hidden" animate="show" variants={itemVariants}>
           <Link href="/" className="font-pixelify-sans text-2xl font-bold">
             AS.
           </Link>
@@ -67,6 +58,6 @@ export default function Navbar() {
           ))}
         </motion.ul>
       </nav>
-    </motion.header>
+    </header>
   );
 }
