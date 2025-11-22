@@ -1,7 +1,7 @@
 ## [anmoldeep.dev](https://anmoldeep.dev)
 
 - Next.Js
-- Framer Motion
+- Motion
 - Tailwind CSS
 - MDX for blogs
 - Vercel Deployment
